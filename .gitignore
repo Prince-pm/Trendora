@@ -1,0 +1,15 @@
+# .gitignore
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# IDE files
+.vscode/
+*.code-workspace
+
+# Node modules (only if you use npm later)
+node_modules/

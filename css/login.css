@@ -1,0 +1,116 @@
+/* Scoped styles for login/register page */
+.auth-container {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+    color: #fff;
+    background-color: #000;
+  }
+  
+  .auth-forms {
+    background-color: #111;
+    padding: 2.5rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+    display: flex;
+    gap: 4rem;
+    max-width: 900px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .auth-forms section {
+    flex: 1 1 320px;
+    max-width: 400px;
+  }
+  
+  .auth-forms h2 {
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    font-size: 2rem;
+    user-select: none;
+  }
+  
+  form label {
+    display: block;
+    margin: 1rem 0 0.3rem;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #222;
+    color: #fff;
+    outline-color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  form input::placeholder {
+    color: #888;
+  }
+  
+  form input:focus {
+    background-color: #333;
+  }
+  
+  .btn-submit {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #fff;
+    color: #000;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  
+  .btn-submit:hover {
+    background-color: #ddd;
+  }
+  
+  /* Divider between forms */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-weight: 600;
+    font-size: 1.2rem;
+    user-select: none;
+  }
+  
+  .divider span {
+    padding: 0 0.75rem;
+    background-color: #111;
+  }
+  
+  /* Responsive */
+  
+  @media (max-width: 768px) {
+    .auth-forms {
+      flex-direction: column;
+      padding: 2rem;
+      gap: 3rem;
+    }
+    
+    .auth-forms section {
+      max-width: 100%;
+    }
+  
+    .divider {
+      display: none;
+    }
+  }
+  

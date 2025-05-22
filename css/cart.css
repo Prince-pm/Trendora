@@ -1,0 +1,226 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Body & Background */
+  body {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Container */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: #111;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    user-select: none;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #fff;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.8rem;
+  }
+  
+  .nav-links a {
+    color: #bbb;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #fff;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 3px;
+  }
+  
+  /* Cart Section */
+  .cart-section {
+    margin: 3rem 0 5rem;
+  }
+  
+  .cart-section h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    user-select: none;
+    text-align: center;
+  }
+  
+  /* Cart Container */
+  .cart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  /* Individual Cart Item */
+  .cart-item {
+    display: flex;
+    background-color: #111;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    align-items: center;
+    gap: 1.5rem;
+    user-select: none;
+  }
+  
+  .cart-item img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    border-radius: 10px;
+    background-color: #222;
+  }
+  
+  /* Item Details */
+  .item-details {
+    flex: 1;
+    color: #eee;
+  }
+  
+  .item-details h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  
+  .price {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+  }
+  
+  /* Quantity input */
+  .quantity-input {
+    width: 60px;
+    padding: 0.4rem 0.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #222;
+    color: #fff;
+    margin-right: 1rem;
+    user-select: text;
+  }
+  
+  /* Remove Button */
+  .remove-btn {
+    background-color: #e63946;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  
+  .remove-btn:hover {
+    background-color: #c5303f;
+  }
+  
+  /* Cart Summary */
+  .cart-summary {
+    background-color: #111;
+    padding: 1.8rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    user-select: none;
+  }
+  
+  .cart-summary h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+  
+  /* Checkout Button */
+  .btn-checkout {
+    display: inline-block;
+    background-color: #48cae4;
+    color: #000;
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  
+  .btn-checkout:hover {
+    background-color: #219ebc;
+    color: #fff;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #111;
+    padding: 1rem 0;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: auto;
+    user-select: none;
+  }
+  
+  /* Scroll to Top Button */
+  .scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 0 12px #fff;
+    transition: background-color 0.3s ease;
+    user-select: none;
+    display: none; /* Initially hidden */
+  }
+  
+  .scroll-top:hover {
+    background-color: #555;
+  }
+  
+  /* Show scroll button on scroll */
+  body.scrolled .scroll-top {
+    display: block;
+  }
+  

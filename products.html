@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products | Trendora</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/products.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">Trendora</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html" class="active">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Filter Section -->
+  <section class="filters">
+    <div class="container">
+      <h2>Filter Products</h2>
+      <div class="filters-grid">
+        <div class="filter-box">
+          <label for="category">Category</label>
+          <select id="category">
+            <option>All</option>
+            <option>Fashion</option>
+            <option>Electronics</option>
+            <option>Home</option>
+            <option>Beauty</option>
+          </select>
+        </div>
+
+        <div class="filter-box">
+          <label for="price">Price Range</label>
+          <input type="range" id="price" min="0" max="500" value="250" />
+          <div class="price-labels">
+            <span>$0</span>
+            <span>$500</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Listing Section -->
+  <section class="product-list container">
+    <div class="product-card">
+      <div class="product-image placeholder"></div>
+      <div class="product-info">
+        <h3>Minimalist Watch</h3>
+        <p class="price">$149</p>
+        <a href="product-view.html" class="btn">View Product</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-image placeholder"></div>
+      <div class="product-info">
+        <h3>Bluetooth Headphones</h3>
+        <p class="price">$89</p>
+        <a href="product-view.html" class="btn">View Product</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-image placeholder"></div>
+      <div class="product-info">
+        <h3>Modern Lamp</h3>
+        <p class="price">$59</p>
+        <a href="product-view.html" class="btn">View Product</a>
+      </div>
+    </div>
+    <!-- Add more cards as needed -->
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Trendora. Where Trends Meet Their Aura.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑</button>
+</body>
+</html>

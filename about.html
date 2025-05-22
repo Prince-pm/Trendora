@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - Trendora</title>
+  <link rel="stylesheet" href="css/about.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Trendora</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Shop</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container about-container">
+    <section class="intro">
+      <div class="intro-text">
+        <h1>About Trendora</h1>
+        <p>
+          At Trendora, <strong>Where Trends Meet Their Aura</strong>, we strive to create an unparalleled shopping experience by blending the latest fashion trends with a distinct aura of elegance and style.
+          Our passion is to bring you the finest products that reflect your personality and inspire your lifestyle.
+        </p>
+      </div>
+      <div class="intro-image">
+        <img src="images/about-hero.jpg" alt="Fashion and Style" />
+      </div>
+    </section>
+
+    <section class="features">
+      <h2>Why Choose Trendora?</h2>
+      <div class="features-list">
+        <div class="feature-item">
+          <h3>Exclusive Products</h3>
+          <p>Handpicked items to keep you ahead in fashion and technology.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Trusted Quality</h3>
+          <p>Every product is quality-checked and curated just for you.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Fast & Secure Delivery</h3>
+          <p>Reliable shipping with safe and quick delivery to your doorstep.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <h2>What Our Customers Say</h2>
+      <div class="testimonials-list">
+        <blockquote>
+          <p>"Trendora’s collection is stunning! The quality and style always impress me. Highly recommended!"</p>
+          <footer>- Jessica M.</footer>
+        </blockquote>
+        <blockquote>
+          <p>"Amazing customer service and fast delivery. Shopping here feels like a luxury experience."</p>
+          <footer>- David L.</footer>
+        </blockquote>
+        <blockquote>
+          <p>"Love how Trendora combines trends with a unique aura. I keep coming back for more."</p>
+          <footer>- Sophia R.</footer>
+        </blockquote>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2025 Trendora. Where Trends Meet Their Aura.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollTopBtn" title="Go to top">&#8679;</button>
+
+  <script>
+    // Scroll to top button functionality
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    window.onscroll = () => {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollBtn.style.display = "block";
+      } else {
+        scrollBtn.style.display = "none";
+      }
+    };
+    scrollBtn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  </script>
+
+</body>
+</html>

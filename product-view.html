@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Product Details | Trendora</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/productview.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="product-view.css" />
 </head>
 <body>
 
@@ -33,24 +35,31 @@
 
   <!-- Product View Section -->
   <section class="product-view-section">
-    <div class="product-image" id="product-image"></div>
-
-    <div class="product-details">
-      <h1 class="product-title" id="product-title">Loading...</h1>
-      <p class="product-price" id="product-price"></p>
-      <p class="product-description" id="product-description"></p>
-
-      <form class="add-to-cart-form" action="#" method="POST">
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" min="1" value="1" />
-        <button type="submit" class="btn-add-cart">Add to Cart</button>
-      </form>
-
-      <div class="product-meta">
-        <p><strong>Category:</strong> <span id="product-category"></span></p>
-        <p><strong>SKU:</strong> <span id="product-sku"></span></p>
-        <p><strong>Availability:</strong> <span id="product-availability"></span></p>
+    <div class="container product-view-container">
+      
+      <!-- Show all 3 product images -->
+      <div class="product-image" id="product-image">
+        <!-- Images inserted by JS -->
       </div>
+
+      <div class="product-details">
+        <h1 class="product-title" id="product-title">Loading...</h1>
+        <p class="product-price" id="product-price"></p>
+        <p class="product-description" id="product-description"></p>
+
+        <form class="add-to-cart-form" action="#" method="POST">
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" name="quantity" min="1" value="1" />
+          <button type="submit" class="btn-add-cart">Add to Cart</button>
+        </form>
+
+        <div class="product-meta">
+          <p><strong>Category:</strong> <span id="product-category"></span></p>
+          <p><strong>SKU:</strong> <span id="product-sku"></span></p>
+          <p><strong>Availability:</strong> <span id="product-availability"></span></p>
+        </div>
+      </div>
+      
     </div>
   </section>
 
@@ -60,37 +69,37 @@
   </footer>
 
   <script>
-    // Product data
     const products = {
       "minimalist-watch": {
         title: "Minimalist Watch",
-        price: "₹149",
+        price: "$149",
         description: "A sleek and elegant minimalist watch that complements any outfit.",
         category: "Fashion",
         sku: "MW-001",
         availability: "In Stock",
-        image: "images/minimalist-watch.jpg"
+        image: "assets/icons/minimalist-watch.jpg"
       },
       "bluetooth-headphones": {
         title: "Bluetooth Headphones",
-        price: "₹89",
+        price: "$89",
         description: "Wireless Bluetooth headphones with noise cancellation and long battery life.",
         category: "Electronics",
         sku: "BH-002",
         availability: "In Stock",
-        image: "images/bluetooth-headphones.jpg"
+        image: "assets/icons/bluetooth-headphones.jpg"
       },
       "modern-lamp": {
         title: "Modern Lamp",
-        price: "₹59",
+        price: "$59",
         description: "A stylish modern lamp that brightens up your living space.",
         category: "Home",
         sku: "ML-003",
         availability: "In Stock",
-        image: "images/modern-lamp.jpg"
+        image: "assets/icons/modern-lamp.jpg"
       }
     };
 
+    // Get product key param or default to first product
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(param);
@@ -100,6 +109,7 @@
       const productKey = getQueryParam("product") || "minimalist-watch";
       const product = products[productKey];
 
+      // Show product info or error
       if (!product) {
         document.getElementById("product-title").textContent = "Product Not Found";
         document.getElementById("product-price").textContent = "";
@@ -107,20 +117,43 @@
         document.getElementById("product-category").textContent = "-";
         document.getElementById("product-sku").textContent = "-";
         document.getElementById("product-availability").textContent = "-";
-        document.getElementById("product-image").innerHTML = "";
-        return;
+      } else {
+        document.getElementById("product-title").textContent = product.title;
+        document.getElementById("product-price").textContent = product.price;
+        document.getElementById("product-description").textContent = product.description;
+        document.getElementById("product-category").textContent = product.category;
+        document.getElementById("product-sku").textContent = product.sku;
+        document.getElementById("product-availability").textContent = product.availability;
       }
 
-      document.getElementById("product-title").textContent = product.title;
-      document.getElementById("product-price").textContent = product.price;
-      document.getElementById("product-description").textContent = product.description;
-      document.getElementById("product-category").textContent = product.category;
-      document.getElementById("product-sku").textContent = product.sku;
-      document.getElementById("product-availability").textContent = product.availability;
-      document.getElementById("product-image").innerHTML = `<img src="${product.image}" alt="${product.title}" />`;
+      // Show all product images side by side
+      const imageContainer = document.getElementById("product-image");
+      imageContainer.innerHTML = ""; // clear
+
+      for (const key in products) {
+        const prod = products[key];
+        const img = document.createElement("img");
+        img.src = prod.image;
+        img.alt = prod.title;
+        img.title = prod.title;
+        img.classList.add("product-thumb");
+        // Clicking an image updates details for that product
+        img.addEventListener("click", () => {
+          // Update product info dynamically
+          document.getElementById("product-title").textContent = prod.title;
+          document.getElementById("product-price").textContent = prod.price;
+          document.getElementById("product-description").textContent = prod.description;
+          document.getElementById("product-category").textContent = prod.category;
+          document.getElementById("product-sku").textContent = prod.sku;
+          document.getElementById("product-availability").textContent = prod.availability;
+        });
+        imageContainer.appendChild(img);
+      }
     }
 
     window.onload = loadProduct;
   </script>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

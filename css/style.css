@@ -65,8 +65,8 @@ body {
 }
 
 .nav-icons a img {
-  width: 24px;
-  height: 24px;
+  width: 36px;   /* Increased size from 24px */
+  height: 36px;  /* Increased size from 24px */
   filter: invert(100%);
   transition: filter 0.3s ease;
 }
@@ -196,5 +196,10 @@ body {
 
   .logo img {
     max-height: 50px; /* Smaller logo on mobile */
+  }
+
+  .nav-icons a img {
+    width: 28px;  /* Slightly smaller cart on mobile */
+    height: 28px;
   }
 }

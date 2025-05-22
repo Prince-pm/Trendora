@@ -1,77 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trendora | Checkout</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/checkout.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - Trendora</title>
+  <link rel="stylesheet" href="css/checkout.css" />
 </head>
-
 <body>
+
   <!-- Navbar -->
-  <header class="navbar">
-    <div class="container">
-      <h1 class="logo">Trendora</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="cart.html">Cart</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+  <nav class="navbar">
+    <div class="logo">Trendora</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+      <a href="cart.html">Cart</a>
+      <a href="contact.html">Contact</a>
     </div>
-  </header>
+  </nav>
 
-  <main class="checkout-container">
-    <h2>Checkout</h2>
-    <div class="checkout-grid">
-      <!-- Shipping Information Form -->
-      <div class="shipping-info">
-        <h3>Shipping Information</h3>
-        <form>
-          <label for="fullname">Full Name</label>
-          <input type="text" id="fullname" required>
+  <!-- Checkout Container -->
+  <div class="checkout-container">
 
-          <label for="email">Email</label>
-          <input type="email" id="email" required>
+    <!-- Shipping Info -->
+    <div class="shipping-info">
+      <h2>Shipping Information</h2>
+      <form>
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" required />
 
-          <label for="address">Address</label>
-          <input type="text" id="address" required>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required />
 
-          <label for="city">City</label>
-          <input type="text" id="city" required>
+        <label for="address">Shipping Address</label>
+        <input type="text" id="address" name="address" required />
 
-          <label for="zip">ZIP Code</label>
-          <input type="text" id="zip" required>
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" required />
 
-          <label for="country">Country</label>
-          <input type="text" id="country" required>
+        <label for="state">State</label>
+        <input type="text" id="state" name="state" required />
 
-          <button type="submit">Place Order</button>
-        </form>
+        <label for="zip">ZIP Code</label>
+        <input type="text" id="zip" name="zip" required />
+
+        <label for="country">Country</label>
+        <select id="country" name="country" required>
+          <option value="">Select Country</option>
+          <option value="India">India</option>
+          <option value="USA">USA</option>
+          <option value="UK">UK</option>
+        </select>
+      </form>
+    </div>
+
+    <!-- Order Summary -->
+    <div class="order-summary">
+      <h2>Order Summary</h2>
+      <div class="order-item">
+        <span>Product Name 1</span>
+        <span>₹499</span>
+      </div>
+      <div class="order-item">
+        <span>Product Name 2</span>
+        <span>₹699</span>
+      </div>
+      <div class="total">
+        <span>Total:</span>
+        <span>₹1198</span>
       </div>
 
-      <!-- Order Summary -->
-      <div class="order-summary">
-        <h3>Order Summary</h3>
-        <ul>
-          <li>Product 1 <span>$29.99</span></li>
-          <li>Product 2 <span>$19.99</span></li>
-          <li>Shipping <span>$5.00</span></li>
-          <li class="total">Total <span>$54.98</span></li>
-        </ul>
-      </div>
+      <button class="place-order-btn" onclick="placeOrder()">Place Order</button>
     </div>
-  </main>
+
+  </div>
 
   <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2025 Trendora. Where Trends Meet Their Aura.</p>
+  <footer>
+    &copy; 2025 Trendora. Where Trends Meet Their Aura.
   </footer>
-</body>
 
+  <script>
+    function placeOrder() {
+      alert("Your order has been placed successfully!");
+      window.location.href = "order-confirmation.html";
+    }
+  </script>
+
+</body>
 </html>

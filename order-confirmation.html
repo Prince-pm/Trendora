@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Order Confirmation - Trendora</title>
+  <link rel="stylesheet" href="css/order-confirmation.css" />
+</head>
+<body>
+
+  <!-- Navbar (can be reused in all pages) -->
+  <nav>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Trendora</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Shop</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container confirmation-container">
+    <div class="confirmation-box">
+      <h1>Thank you for your purchase!</h1>
+      <p>Your order has been successfully placed.</p>
+      <div class="order-details">
+        <p><strong>Order Number:</strong> #TRD123456789</p>
+        <p><strong>Status:</strong> <span class="status delivered">Processing</span></p>
+      </div>
+      <a href="index.html" class="btn">Continue Shopping</a>
+    </div>
+  </main>
+
+  <!-- Footer (reuse for all pages) -->
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2025 Trendora. Where Trends Meet Their Aura.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollTopBtn" title="Go to top">&#8679;</button>
+
+  <script>
+    // Scroll to top button functionality
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    window.onscroll = () => {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollBtn.style.display = "block";
+      } else {
+        scrollBtn.style.display = "none";
+      }
+    };
+    scrollBtn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  </script>
+
+</body>
+</html>

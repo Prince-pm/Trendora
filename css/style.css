@@ -1,0 +1,144 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body & Fonts */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000;
+    color: #fff;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: #111;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #222;
+  }
+  
+  .logo img {
+    height: 50px;
+    filter: brightness(0) invert(1); /* ensure logo is white on black */
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+  
+  .nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links li a:hover,
+  .nav-links li a.active {
+    color: #ff4081; /* trendy pinkish highlight */
+  }
+  
+  /* Nav icons */
+  .nav-icons img {
+    width: 24px;
+    filter: invert(1);
+  }
+  
+  /* Hero Section */
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+    flex-direction: column;
+    padding: 0 20px;
+    background: linear-gradient(135deg, #1c1c1c 0%, #000 100%);
+  }
+  
+  .hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+  }
+  
+  .hero-slogan {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #bbb;
+  }
+  
+  .aura-highlight {
+    color: #ff4081;
+    font-weight: 700;
+  }
+  
+  .btn-primary {
+    background-color: #ff4081;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #e73370;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  /* Scroll to top button */
+  #scrollToTopBtn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background-color: #ff4081;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 0 10px #ff4081;
+  }
+  
+  #scrollToTopBtn:hover {
+    background-color: #e73370;
+  }
+  
+  /* Responsive Nav (Optional for later) */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+    .nav-icons {
+      display: flex;
+      gap: 15px;
+    }
+  }
+  

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trendora | Checkout</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <h1 class="logo">Trendora</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="checkout-container">
+    <h2>Checkout</h2>
+    <div class="checkout-grid">
+      <!-- Shipping Information Form -->
+      <div class="shipping-info">
+        <h3>Shipping Information</h3>
+        <form>
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+
+          <label for="address">Address</label>
+          <input type="text" id="address" required>
+
+          <label for="city">City</label>
+          <input type="text" id="city" required>
+
+          <label for="zip">ZIP Code</label>
+          <input type="text" id="zip" required>
+
+          <label for="country">Country</label>
+          <input type="text" id="country" required>
+
+          <button type="submit">Place Order</button>
+        </form>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <ul>
+          <li>Product 1 <span>$29.99</span></li>
+          <li>Product 2 <span>$19.99</span></li>
+          <li>Shipping <span>$5.00</span></li>
+          <li class="total">Total <span>$54.98</span></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Trendora. Where Trends Meet Their Aura.</p>
+  </footer>
+</body>
+
+</html>

@@ -35,8 +35,9 @@ body {
 }
 
 .logo img {
-  max-height: 40px;
+  max-height: 80px; /* Increased from 40px */
   width: auto;
+  transition: max-height 0.3s ease;
 }
 
 .nav-links {
@@ -191,5 +192,9 @@ body {
 
   .nav-toggle {
     display: flex;
+  }
+
+  .logo img {
+    max-height: 50px; /* Smaller logo on mobile */
   }
 }

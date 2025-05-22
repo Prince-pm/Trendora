@@ -4,10 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Product Details | Trendora</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/productview.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="product-view.css" />
 </head>
 <body>
 
@@ -35,30 +33,24 @@
 
   <!-- Product View Section -->
   <section class="product-view-section">
-    <div class="container product-view-container">
-      
-      <div class="product-image" id="product-image">
-        <!-- Image will be inserted by JS -->
+    <div class="product-image" id="product-image"></div>
+
+    <div class="product-details">
+      <h1 class="product-title" id="product-title">Loading...</h1>
+      <p class="product-price" id="product-price"></p>
+      <p class="product-description" id="product-description"></p>
+
+      <form class="add-to-cart-form" action="#" method="POST">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1" />
+        <button type="submit" class="btn-add-cart">Add to Cart</button>
+      </form>
+
+      <div class="product-meta">
+        <p><strong>Category:</strong> <span id="product-category"></span></p>
+        <p><strong>SKU:</strong> <span id="product-sku"></span></p>
+        <p><strong>Availability:</strong> <span id="product-availability"></span></p>
       </div>
-
-      <div class="product-details">
-        <h1 class="product-title" id="product-title">Loading...</h1>
-        <p class="product-price" id="product-price"></p>
-        <p class="product-description" id="product-description"></p>
-
-        <form class="add-to-cart-form" action="#" method="POST">
-          <label for="quantity">Quantity:</label>
-          <input type="number" id="quantity" name="quantity" min="1" value="1" />
-          <button type="submit" class="btn-add-cart">Add to Cart</button>
-        </form>
-
-        <div class="product-meta">
-          <p><strong>Category:</strong> <span id="product-category"></span></p>
-          <p><strong>SKU:</strong> <span id="product-sku"></span></p>
-          <p><strong>Availability:</strong> <span id="product-availability"></span></p>
-        </div>
-      </div>
-      
     </div>
   </section>
 
@@ -72,7 +64,7 @@
     const products = {
       "minimalist-watch": {
         title: "Minimalist Watch",
-        price: "$149",
+        price: "₹149",
         description: "A sleek and elegant minimalist watch that complements any outfit.",
         category: "Fashion",
         sku: "MW-001",
@@ -81,7 +73,7 @@
       },
       "bluetooth-headphones": {
         title: "Bluetooth Headphones",
-        price: "$89",
+        price: "₹89",
         description: "Wireless Bluetooth headphones with noise cancellation and long battery life.",
         category: "Electronics",
         sku: "BH-002",
@@ -90,7 +82,7 @@
       },
       "modern-lamp": {
         title: "Modern Lamp",
-        price: "$59",
+        price: "₹59",
         description: "A stylish modern lamp that brightens up your living space.",
         category: "Home",
         sku: "ML-003",
@@ -99,13 +91,11 @@
       }
     };
 
-    // Function to get URL param
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(param);
     }
 
-    // Load product data based on URL param
     function loadProduct() {
       const productKey = getQueryParam("product") || "minimalist-watch";
       const product = products[productKey];
@@ -130,10 +120,7 @@
       document.getElementById("product-image").innerHTML = `<img src="${product.image}" alt="${product.title}" />`;
     }
 
-    // Run on page load
     window.onload = loadProduct;
   </script>
-
-  <script src="js/main.js"></script>
 </body>
 </html>

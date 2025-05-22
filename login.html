@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trendora | Login/Register</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container navbar-container">
+      <div class="logo">TRENDORA</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="login.html" class="active">Login/Register</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-container container">
+    <div class="auth-forms">
+
+      <!-- Login Form -->
+      <section class="login-section">
+        <h2>Login</h2>
+        <form id="login-form" action="#" method="post" autocomplete="off">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" name="login-email" required placeholder="Enter your email" />
+          
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="login-password" required placeholder="Enter your password" />
+          
+          <button type="submit" class="btn-submit">Login</button>
+        </form>
+      </section>
+
+      <div class="divider"><span>OR</span></div>
+
+      <!-- Register Form -->
+      <section class="register-section">
+        <h2>Register</h2>
+        <form id="register-form" action="#" method="post" autocomplete="off">
+          <label for="register-name">Full Name</label>
+          <input type="text" id="register-name" name="register-name" required placeholder="Enter your full name" />
+          
+          <label for="register-email">Email</label>
+          <input type="email" id="register-email" name="register-email" required placeholder="Enter your email" />
+          
+          <label for="register-password">Password</label>
+          <input type="password" id="register-password" name="register-password" required placeholder="Create a password" />
+          
+          <label for="register-password-confirm">Confirm Password</label>
+          <input type="password" id="register-password-confirm" name="register-password-confirm" required placeholder="Confirm password" />
+          
+          <button type="submit" class="btn-submit">Register</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Trendora. Where Trends Meet Their Aura.</p>
+  </footer>
+</body>
+</html>

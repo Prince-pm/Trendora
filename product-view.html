@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -37,9 +37,9 @@
   <section class="product-view-section">
     <div class="container product-view-container">
       
-      <!-- Show all 3 product images -->
+      <!-- Single product image -->
       <div class="product-image" id="product-image">
-        <!-- Images inserted by JS -->
+        <!-- Image inserted by JS -->
       </div>
 
       <div class="product-details">
@@ -77,7 +77,7 @@
         category: "Fashion",
         sku: "MW-001",
         availability: "In Stock",
-        image: "assets/icons/minimalist-watch.jpg"
+        image: "images/minimalist-watch.jpg"
       },
       "bluetooth-headphones": {
         title: "Bluetooth Headphones",
@@ -86,7 +86,7 @@
         category: "Electronics",
         sku: "BH-002",
         availability: "In Stock",
-        image: "assets/icons/bluetooth-headphones.jpg"
+        image: "images/bluetooth-headphones.jpg"
       },
       "modern-lamp": {
         title: "Modern Lamp",
@@ -95,7 +95,7 @@
         category: "Home",
         sku: "ML-003",
         availability: "In Stock",
-        image: "assets/icons/modern-lamp.jpg"
+        image: "images/modern-lamp.jpg"
       }
     };
 
@@ -109,7 +109,6 @@
       const productKey = getQueryParam("product") || "minimalist-watch";
       const product = products[productKey];
 
-      // Show product info or error
       if (!product) {
         document.getElementById("product-title").textContent = "Product Not Found";
         document.getElementById("product-price").textContent = "";
@@ -117,6 +116,7 @@
         document.getElementById("product-category").textContent = "-";
         document.getElementById("product-sku").textContent = "-";
         document.getElementById("product-availability").textContent = "-";
+        document.getElementById("product-image").innerHTML = "";
       } else {
         document.getElementById("product-title").textContent = product.title;
         document.getElementById("product-price").textContent = product.price;
@@ -124,29 +124,14 @@
         document.getElementById("product-category").textContent = product.category;
         document.getElementById("product-sku").textContent = product.sku;
         document.getElementById("product-availability").textContent = product.availability;
-      }
 
-      // Show all product images side by side
-      const imageContainer = document.getElementById("product-image");
-      imageContainer.innerHTML = ""; // clear
+        const imageContainer = document.getElementById("product-image");
+        imageContainer.innerHTML = ""; // Clear
 
-      for (const key in products) {
-        const prod = products[key];
         const img = document.createElement("img");
-        img.src = prod.image;
-        img.alt = prod.title;
-        img.title = prod.title;
-        img.classList.add("product-thumb");
-        // Clicking an image updates details for that product
-        img.addEventListener("click", () => {
-          // Update product info dynamically
-          document.getElementById("product-title").textContent = prod.title;
-          document.getElementById("product-price").textContent = prod.price;
-          document.getElementById("product-description").textContent = prod.description;
-          document.getElementById("product-category").textContent = prod.category;
-          document.getElementById("product-sku").textContent = prod.sku;
-          document.getElementById("product-availability").textContent = prod.availability;
-        });
+        img.src = product.image;
+        img.alt = product.title;
+        img.classList.add("single-product-image");
         imageContainer.appendChild(img);
       }
     }

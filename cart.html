@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,7 +7,6 @@
   <link rel="stylesheet" href="css/cart.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 </head>
-
 <body>
   <!-- Navbar -->
   <header class="navbar">
@@ -29,25 +27,12 @@
   <!-- Cart Section -->
   <section class="cart-section container">
     <h1>Your Shopping Cart</h1>
-    <div class="cart-container">
-      <div class="cart-item">
-        <img src="images/product1.png" alt="Product Image" />
-        <div class="item-details">
-          <h3>Product Title</h3>
-          <p class="price">Price: ₹999</p>
-          <label>
-            Qty:
-            <input type="number" min="1" value="1" class="quantity-input" />
-          </label>
-          <button class="remove-btn">Remove</button>
-        </div>
-      </div>
-
-      <!-- Add more cart-item divs as needed -->
+    <div id="cart-container" class="cart-container">
+      <!-- Cart items added via JavaScript -->
     </div>
 
     <div class="cart-summary">
-      <h2>Total: ₹999</h2>
+      <h2 id="cart-total">Total: ₹0</h2>
       <a href="checkout.html" class="btn-checkout">Proceed to Checkout</a>
     </div>
   </section>
@@ -59,6 +44,69 @@
   <footer class="footer">
     <p>© 2025 Trendora. Where Trends Meet Their Aura.</p>
   </footer>
-</body>
 
+  <!-- JavaScript -->
+  <script>
+    function loadCart() {
+      const cartContainer = document.getElementById("cart-container");
+      const cartTotal = document.getElementById("cart-total");
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let total = 0;
+
+      cartContainer.innerHTML = "";
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+        cartTotal.textContent = "Total: ₹0";
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "cart-item";
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.title}" />
+          <div class="item-details">
+            <h3>${item.title}</h3>
+            <p class="price">Price: ₹${item.price}</p>
+            <label>
+              Qty:
+              <input type="number" min="1" value="${item.quantity}" class="quantity-input" data-index="${index}" />
+            </label>
+            <button class="remove-btn" data-index="${index}">Remove</button>
+          </div>
+        `;
+        cartContainer.appendChild(itemDiv);
+      });
+
+      cartTotal.textContent = `Total: ₹${total}`;
+
+      document.querySelectorAll(".quantity-input").forEach(input => {
+        input.addEventListener("change", (e) => {
+          const index = e.target.dataset.index;
+          const newQty = parseInt(e.target.value);
+          if (newQty > 0) {
+            cart[index].quantity = newQty;
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+          }
+        });
+      });
+
+      document.querySelectorAll(".remove-btn").forEach(button => {
+        button.addEventListener("click", (e) => {
+          const index = e.target.dataset.index;
+          cart.splice(index, 1);
+          localStorage.setItem("cart", JSON.stringify(cart));
+          loadCart();
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", loadCart);
+  </script>
+</body>
 </html>

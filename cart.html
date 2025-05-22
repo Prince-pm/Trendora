@@ -28,7 +28,7 @@
   <section class="cart-section container">
     <h1>Your Shopping Cart</h1>
     <div id="cart-container" class="cart-container">
-      <!-- Cart items added via JavaScript -->
+      <!-- Cart items injected by JavaScript -->
     </div>
 
     <div class="cart-summary">
@@ -49,15 +49,15 @@
   <script>
     function loadCart() {
       const cartContainer = document.getElementById("cart-container");
-      const cartTotal = document.getElementById("cart-total");
+      const cartTotalElement = document.getElementById("cart-total");
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      let total = 0;
 
       cartContainer.innerHTML = "";
+      let total = 0;
 
       if (cart.length === 0) {
         cartContainer.innerHTML = "<p>Your cart is empty.</p>";
-        cartTotal.textContent = "Total: ₹0";
+        cartTotalElement.textContent = "Total: ₹0";
         return;
       }
 
@@ -79,14 +79,20 @@
             <button class="remove-btn" data-index="${index}">Remove</button>
           </div>
         `;
+
         cartContainer.appendChild(itemDiv);
       });
 
-      cartTotal.textContent = `Total: ₹${total}`;
+      cartTotalElement.textContent = `Total: ₹${total}`;
 
+      // Attach events after rendering
+      attachCartEvents(cart);
+    }
+
+    function attachCartEvents(cart) {
       document.querySelectorAll(".quantity-input").forEach(input => {
         input.addEventListener("change", (e) => {
-          const index = e.target.dataset.index;
+          const index = parseInt(e.target.dataset.index);
           const newQty = parseInt(e.target.value);
           if (newQty > 0) {
             cart[index].quantity = newQty;
@@ -98,7 +104,7 @@
 
       document.querySelectorAll(".remove-btn").forEach(button => {
         button.addEventListener("click", (e) => {
-          const index = e.target.dataset.index;
+          const index = parseInt(e.target.dataset.index);
           cart.splice(index, 1);
           localStorage.setItem("cart", JSON.stringify(cart));
           loadCart();

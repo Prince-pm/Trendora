@@ -2,92 +2,160 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Product View | Trendora</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Details | Trendora</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/product-view.css" />
+  <link rel="stylesheet" href="css/productview.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
 </head>
 <body>
+
   <!-- Navbar -->
-  <header class="navbar">
+  <nav class="navbar">
     <div class="container">
       <a href="index.html" class="logo">
-        <img src="assets/images/logo/trendora.png" alt="Trendora Logo" style="height:40px;" />
+        <img src="assets/images/logo/trendora.png" alt="Trendora Logo" />
       </a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="cart.html">Cart</a></li>
-        </ul>
-      </nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html" class="active">Shop</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-icons">
+        <a href="cart.html" title="Cart"><img src="assets/icons/cart-white.svg" alt="Cart" /></a>
+        <button class="nav-toggle" aria-label="toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <!-- Product Detail Section -->
-  <section class="product-detail-container">
-    <div class="product-image">
-      <img id="product-img" src="" alt="Product Image" />
-    </div>
-    <div class="product-info">
-      <h1 id="product-title">Product Title</h1>
-      <p class="price" id="product-price">$0</p>
-      <p class="description" id="product-description">Product description will be shown here.</p>
-      <button class="btn">Add to Cart</button>
+  <!-- Product View Section -->
+  <section class="product-view-section">
+    <div class="container product-view-container">
+      
+      <div class="product-image" id="product-image">
+        <!-- Image inserted by JS -->
+      </div>
+
+      <div class="product-details">
+        <h1 class="product-title" id="product-title">Loading...</h1>
+        <p class="product-price" id="product-price"></p>
+        <p class="product-description" id="product-description"></p>
+
+        <form class="add-to-cart-form" id="add-to-cart-form">
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" name="quantity" min="1" value="1" />
+          <button type="submit" class="btn-add-cart">Add to Cart</button>
+        </form>
+
+        <div class="product-meta">
+          <p><strong>Category:</strong> <span id="product-category"></span></p>
+          <p><strong>SKU:</strong> <span id="product-sku"></span></p>
+          <p><strong>Availability:</strong> <span id="product-availability"></span></p>
+        </div>
+      </div>
+      
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Trendora. Where Trends Meet Their Aura.</p>
-    </div>
+    <p>© 2025 Trendora. Where Trends Meet Their Aura.</p>
   </footer>
 
   <script>
     const products = {
       "minimalist-watch": {
         title: "Minimalist Watch",
-        price: "$149",
-        img: "assets/icons/minimalist-watch.jpg",
-        desc: "Elegant and timeless minimalist watch with leather strap."
+        price: 149,
+        description: "A sleek and elegant minimalist watch that complements any outfit.",
+        category: "Fashion",
+        sku: "MW-001",
+        availability: "In Stock",
+        image: "assets/icons/minimalist-watch.jpg"
       },
       "bluetooth-headphones": {
         title: "Bluetooth Headphones",
-        price: "$89",
-        img: "assets/icons/bluetooth-headphones.jpg",
-        desc: "Wireless noise-cancelling headphones with rich sound."
+        price: 89,
+        description: "Wireless Bluetooth headphones with noise cancellation and long battery life.",
+        category: "Electronics",
+        sku: "BH-002",
+        availability: "In Stock",
+        image: "assets/icons/bluetooth-headphones.jpg"
       },
       "modern-lamp": {
         title: "Modern Lamp",
-        price: "$59",
-        img: "assets/icons/modern-lamp.jpg",
-        desc: "Stylish lamp to enhance your living space ambiance."
+        price: 59,
+        description: "A stylish modern lamp that brightens up your living space.",
+        category: "Home",
+        sku: "ML-003",
+        availability: "In Stock",
+        image: "assets/icons/modern-lamp.jpg"
       },
       "beauty-kit": {
         title: "Glow Beauty Kit",
         price: "$79",
         img: "assets/icons/beauty-kit.jpg",
         desc: "A complete beauty set to rejuvenate your skin naturally."
-      }
+      }
+
     };
 
-    const params = new URLSearchParams(window.location.search);
-    const key = params.get('product');
-    const product = products[key];
-
-    if (product) {
-      document.getElementById("product-title").textContent = product.title;
-      document.getElementById("product-price").textContent = product.price;
-      document.getElementById("product-img").src = product.img;
-      document.getElementById("product-img").alt = product.title;
-      document.getElementById("product-description").textContent = product.desc;
-    } else {
-      document.querySelector(".product-detail-container").innerHTML = "<p style='color:white'>Product not found.</p>";
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
     }
+
+    function loadProduct() {
+      const productKey = getQueryParam("product") || "minimalist-watch";
+      const product = products[productKey];
+      if (!product) return;
+
+      document.getElementById("product-title").textContent = product.title;
+      document.getElementById("product-price").textContent = ₹${product.price};
+      document.getElementById("product-description").textContent = product.description;
+      document.getElementById("product-category").textContent = product.category;
+      document.getElementById("product-sku").textContent = product.sku;
+      document.getElementById("product-availability").textContent = product.availability;
+
+      const image = document.createElement("img");
+      image.src = product.image;
+      image.alt = product.title;
+      image.className = "single-product-image";
+      document.getElementById("product-image").appendChild(image);
+
+      // Add to cart handler
+      const form = document.getElementById("add-to-cart-form");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const quantity = parseInt(document.getElementById("quantity").value);
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existingIndex = cart.findIndex(item => item.sku === product.sku);
+        if (existingIndex >= 0) {
+          cart[existingIndex].quantity += quantity;
+        } else {
+          cart.push({
+            title: product.title,
+            price: product.price,
+            quantity: quantity,
+            sku: product.sku,
+            image: product.image
+          });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert("Added to cart successfully!");
+      });
+    }
+
+    window.onload = loadProduct;
   </script>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

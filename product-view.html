@@ -71,7 +71,7 @@
     const products = {
       "minimalist-watch": {
         title: "Minimalist Watch",
-        price: 149,
+        price: "$149",
         description: "A sleek and elegant minimalist watch that complements any outfit.",
         category: "Fashion",
         sku: "MW-001",
@@ -80,7 +80,7 @@
       },
       "bluetooth-headphones": {
         title: "Bluetooth Headphones",
-        price: 89,
+        price: "$89",
         description: "Wireless Bluetooth headphones with noise cancellation and long battery life.",
         category: "Electronics",
         sku: "BH-002",
@@ -89,7 +89,7 @@
       },
       "modern-lamp": {
         title: "Modern Lamp",
-        price: 59,
+        price: "$59",
         description: "A stylish modern lamp that brightens up your living space.",
         category: "Home",
         sku: "ML-003",
@@ -99,10 +99,12 @@
       "beauty-kit": {
         title: "Glow Beauty Kit",
         price: "$79",
-        img: "assets/icons/beauty.jpg",
-        desc: "A complete beauty set to rejuvenate your skin naturally."
-      }
-
+        description: "A complete beauty set to rejuvenate your skin naturally.",
+        category: "Beauty",
+        sku: "BK-004",
+        availability: "In Stock",
+        image: "assets/icons/beauty.jpg"
+      }
     };
 
     const params = new URLSearchParams(window.location.search);
@@ -112,11 +114,18 @@
     if (product) {
       document.getElementById("product-title").textContent = product.title;
       document.getElementById("product-price").textContent = product.price;
-      document.getElementById("product-img").src = product.img;
-      document.getElementById("product-img").alt = product.title;
-      document.getElementById("product-description").textContent = product.desc;
+      document.getElementById("product-description").textContent = product.description;
+      document.getElementById("product-category").textContent = product.category;
+      document.getElementById("product-sku").textContent = product.sku;
+      document.getElementById("product-availability").textContent = product.availability;
+
+      const imgEl = document.createElement("img");
+      imgEl.src = product.image;
+      imgEl.alt = product.title;
+      imgEl.classList.add("product-img");
+      document.getElementById("product-image").appendChild(imgEl);
     } else {
-      document.querySelector(".product-detail-container").innerHTML = "<p style='color:white'>Product not found.</p>";
+      document.querySelector(".product-view-container").innerHTML = "<p style='color:white'>Product not found.</p>";
     }
   </script>
 </body>

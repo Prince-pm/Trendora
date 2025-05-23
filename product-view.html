@@ -36,7 +36,7 @@
   <!-- Product View Section -->
   <section class="product-view-section">
     <div class="container product-view-container">
-      
+
       <div class="product-image" id="product-image">
         <!-- Image inserted by JS -->
       </div>
@@ -48,7 +48,7 @@
 
         <form class="add-to-cart-form" id="add-to-cart-form">
           <label for="quantity">Quantity:</label>
-          <input type="number" id="quantity" name="quantity" min="1" value="1" />
+          <input type="number" id="quantity" name="quantity" min="1" value="1" required />
           <button type="submit" class="btn-add-cart">Add to Cart</button>
         </form>
 
@@ -58,7 +58,7 @@
           <p><strong>Availability:</strong> <span id="product-availability"></span></p>
         </div>
       </div>
-      
+
     </div>
   </section>
 
@@ -68,10 +68,11 @@
   </footer>
 
   <script>
+    // Product data with keys matching your links
     const products = {
       "minimalist-watch": {
         title: "Minimalist Watch",
-        price: "$149",
+        price: 149,
         description: "A sleek and elegant minimalist watch that complements any outfit.",
         category: "Fashion",
         sku: "MW-001",
@@ -80,7 +81,7 @@
       },
       "bluetooth-headphones": {
         title: "Bluetooth Headphones",
-        price: "$89",
+        price: 89,
         description: "Wireless Bluetooth headphones with noise cancellation and long battery life.",
         category: "Electronics",
         sku: "BH-002",
@@ -89,7 +90,7 @@
       },
       "modern-lamp": {
         title: "Modern Lamp",
-        price: "$59",
+        price: 59,
         description: "A stylish modern lamp that brightens up your living space.",
         category: "Home",
         sku: "ML-003",
@@ -105,30 +106,61 @@
         availability: "In Stock",
         image: "assets/icons/beauty.jpg"
       }
-
-
     };
 
+    // Read product key from URL
     const params = new URLSearchParams(window.location.search);
     const key = params.get('product');
+
+    // Get product data or null
     const product = products[key];
 
-    if (product) {
-      document.getElementById("product-title").textContent = product.title;
-      document.getElementById("product-price").textContent = product.price;
-      document.getElementById("product-description").textContent = product.description;
-      document.getElementById("product-category").textContent = product.category;
-      document.getElementById("product-sku").textContent = product.sku;
-      document.getElementById("product-availability").textContent = product.availability;
+    // Reference DOM elements
+    const productTitle = document.getElementById('product-title');
+    const productPrice = document.getElementById('product-price');
+    const productDescription = document.getElementById('product-description');
+    const productImage = document.getElementById('product-image');
+    const productCategory = document.getElementById('product-category');
+    const productSku = document.getElementById('product-sku');
+    const productAvailability = document.getElementById('product-availability');
+    const addToCartForm = document.getElementById('add-to-cart-form');
 
-      const imgEl = document.createElement("img");
-      imgEl.src = product.image;
-      imgEl.alt = product.title;
-      imgEl.classList.add("product-img");
-      document.getElementById("product-image").appendChild(imgEl);
+    if (product) {
+      productTitle.textContent = product.title;
+      productPrice.textContent = `$${product.price}`;
+      productDescription.textContent = product.description;
+      productCategory.textContent = product.category;
+      productSku.textContent = product.sku;
+      productAvailability.textContent = product.availability;
+
+      // Insert image element inside #product-image div
+      productImage.innerHTML = `<img src="${product.image}" alt="${product.title}" />`;
     } else {
-      document.querySelector(".product-view-container").innerHTML = "<p style='color:white'>Product not found.</p>";
+      // Show error if product not found
+      document.querySelector('.product-view-container').innerHTML = "<p style='color:white;'>Product not found.</p>";
     }
+
+    // Add to Cart form handler
+    addToCartForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (!product) {
+        alert("Product not found.");
+        return;
+      }
+
+      const quantity = parseInt(document.getElementById('quantity').value);
+      if (quantity < 1) {
+        alert("Please enter a valid quantity.");
+        return;
+      }
+
+      // For demo: simulate adding to cart
+      alert(`${quantity} x ${product.title} added to cart.`);
+
+      // TODO: Implement actual cart functionality here (e.g., update localStorage or send to backend)
+    });
   </script>
+
 </body>
 </html>

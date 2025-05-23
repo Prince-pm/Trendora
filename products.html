@@ -18,7 +18,7 @@
       <nav>
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
-          <li><a href="products.html" class="active">Products</a></li>
+          <li><a href="product.html" class="active">Products</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="cart.html">Cart</a></li>
@@ -34,60 +34,68 @@
       <div class="filters-grid">
         <div class="filter-box">
           <label for="category">Category</label>
-          <select id="category">
-            <option>All</option>
-            <option>Fashion</option>
-            <option>Electronics</option>
-            <option>Home</option>
-            <option>Beauty</option>
+          <select id="category" onchange="filterProducts()">
+            <option value="all">All</option>
+            <option value="fashion">Fashion</option>
+            <option value="electronics">Electronics</option>
+            <option value="home">Home</option>
+            <option value="beauty">Beauty</option>
           </select>
         </div>
 
         <div class="filter-box">
-          <label for="price">Price Range</label>
-          <input type="range" id="price" min="0" max="500" value="250" />
-          <div class="price-labels">
-            <span>$0</span>
-            <span>$500</span>
-          </div>
+          <label for="price">Price: $<span id="price-value">250</span></label>
+          <input type="range" id="price" min="0" max="500" value="250" oninput="updatePriceValue()" />
         </div>
       </div>
     </div>
   </section>
 
   <!-- Product Listing Section -->
-  <section class="product-list container">
-    <div class="product-card">
+  <section class="product-list container" id="product-list">
+    <div class="product-card" data-category="fashion" data-price="149">
       <div class="product-image">
         <img src="assets/icons/minimalist-watch.jpg" alt="Minimalist Watch" />
       </div>
       <div class="product-info">
         <h3>Minimalist Watch</h3>
         <p class="price">$149</p>
-        <a href="product-view.html?product=minimalist-watch" class="btn">View Product</a>
+        <a href="#" class="btn">View Product</a>
       </div>
     </div>
-    <div class="product-card">
+
+    <div class="product-card" data-category="electronics" data-price="89">
       <div class="product-image">
         <img src="assets/icons/bluetooth-headphones.jpg" alt="Bluetooth Headphones" />
       </div>
       <div class="product-info">
         <h3>Bluetooth Headphones</h3>
         <p class="price">$89</p>
-        <a href="product-view.html?product=bluetooth-headphones" class="btn">View Product</a>
+        <a href="#" class="btn">View Product</a>
       </div>
     </div>
-    <div class="product-card">
+
+    <div class="product-card" data-category="home" data-price="59">
       <div class="product-image">
         <img src="assets/icons/modern-lamp.jpg" alt="Modern Lamp" />
       </div>
       <div class="product-info">
         <h3>Modern Lamp</h3>
         <p class="price">$59</p>
-        <a href="product-view.html?product=modern-lamp" class="btn">View Product</a>
+        <a href="#" class="btn">View Product</a>
       </div>
     </div>
-    <!-- Add more cards as needed -->
+
+    <div class="product-card" data-category="beauty" data-price="99">
+      <div class="product-image">
+        <img src="assets/icons/beauty-kit.jpg" alt="Beauty Kit" />
+      </div>
+      <div class="product-info">
+        <h3>Deluxe Beauty Kit</h3>
+        <p class="price">$99</p>
+        <a href="#" class="btn">View Product</a>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -99,5 +107,35 @@
 
   <!-- Scroll to Top Button -->
   <button class="scroll-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑</button>
+
+  <script>
+    function updatePriceValue() {
+      const priceSlider = document.getElementById('price');
+      document.getElementById('price-value').textContent = priceSlider.value;
+      filterProducts();
+    }
+
+    function filterProducts() {
+      const selectedCategory = document.getElementById('category').value.toLowerCase();
+      const maxPrice = parseInt(document.getElementById('price').value);
+      const products = document.querySelectorAll('.product-card');
+
+      products.forEach(product => {
+        const productCategory = product.getAttribute('data-category').toLowerCase();
+        const productPrice = parseInt(product.getAttribute('data-price'));
+
+        const matchesCategory = selectedCategory === 'all' || productCategory === selectedCategory;
+        const matchesPrice = productPrice <= maxPrice;
+
+        if (matchesCategory && matchesPrice) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    }
+
+    window.onload = filterProducts;
+  </script>
 </body>
 </html>

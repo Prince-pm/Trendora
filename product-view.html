@@ -140,26 +140,44 @@
       document.querySelector('.product-view-container').innerHTML = "<p style='color:white;'>Product not found.</p>";
     }
 
-    // Add to Cart form handler
     addToCartForm.addEventListener('submit', function (e) {
-      e.preventDefault();
+  e.preventDefault();
 
-      if (!product) {
-        alert("Product not found.");
-        return;
-      }
+  if (!product) {
+    alert("Product not found.");
+    return;
+  }
 
-      const quantity = parseInt(document.getElementById('quantity').value);
-      if (quantity < 1) {
-        alert("Please enter a valid quantity.");
-        return;
-      }
+  const quantity = parseInt(document.getElementById('quantity').value);
+  if (quantity < 1) {
+    alert("Please enter a valid quantity.");
+    return;
+  }
 
-      // For demo: simulate adding to cart
-      alert(`${quantity} x ${product.title} added to cart.`);
+  // Get existing cart or create empty
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-      // TODO: Implement actual cart functionality here (e.g., update localStorage or send to backend)
+  // Check if product already in cart
+  const existingIndex = cart.findIndex(item => item.title === product.title);
+  if (existingIndex !== -1) {
+    // Update quantity
+    cart[existingIndex].quantity += quantity;
+  } else {
+    // Add new product to cart
+    cart.push({
+      title: product.title,
+      price: product.price,
+      quantity: quantity,
+      image: product.image
     });
+  }
+
+  // Save cart back to localStorage
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+  alert(`${quantity} x ${product.title} added to cart.`);
+});
+
   </script>
 
 </body>

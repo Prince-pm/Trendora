@@ -6,19 +6,21 @@
   <title>Trendora | Cart</title>
   <link rel="stylesheet" href="css/cart.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+
 </head>
 <body>
   <!-- Navbar -->
   <header class="navbar">
-    <div class="container navbar-container">
+    <div class="container navbar-container" style="display:flex; justify-content:space-between; align-items:center;">
       <div class="logo">TRENDORA</div>
       <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="categories.html">Categories</a></li>
-          <li><a href="cart.html" class="active">Cart</a></li>
-          <li><a href="contact.html">Contact</a></li>
+        <ul class="nav-links" style="display:flex; gap:1rem; list-style:none; margin:0; padding:0;">
+          <li><a href="index.html" style="color:#eee; text-decoration:none;">Home</a></li>
+          <li><a href="products.html" style="color:#eee; text-decoration:none;">Products</a></li>
+          <li><a href="categories.html" style="color:#eee; text-decoration:none;">Categories</a></li>
+          <li><a href="cart.html" class="active" style="text-decoration:underline;">Cart</a></li>
+          <li><a href="contact.html" style="color:#eee; text-decoration:none;">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -41,7 +43,7 @@
   <button class="scroll-top" title="Scroll to top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑</button>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" style="color:#aaa; text-align:center; margin-top: 3rem;">
     <p>© 2025 Trendora. Where Trends Meet Their Aura.</p>
   </footer>
 
@@ -83,9 +85,8 @@
         cartContainer.appendChild(itemDiv);
       });
 
-      cartTotalElement.textContent = `Total: ₹${total}`;
+      cartTotalElement.textContent = `Total: ₹${total.toFixed(2)}`;
 
-      // Attach events after rendering
       attachCartEvents(cart);
     }
 
@@ -97,6 +98,9 @@
           if (newQty > 0) {
             cart[index].quantity = newQty;
             localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+          } else {
+            alert("Quantity must be at least 1");
             loadCart();
           }
         });

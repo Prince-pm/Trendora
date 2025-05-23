@@ -33,7 +33,7 @@
         <!-- Order items injected by JS -->
       </div>
       <div class="order-total">
-        Total: ₹<span id="order-total">0</span>
+        Total: $<span id="order-total">0</span>
       </div>
     </div>
 
@@ -88,7 +88,7 @@
         itemDiv.innerHTML = `
           <span class="item-name">${item.title}</span>
           <span class="item-qty">x${item.quantity}</span>
-          <span class="item-price">₹${itemTotal}</span>
+          <span class="item-price">$${itemTotal}</span>
         `;
         orderItemsContainer.appendChild(itemDiv);
       });

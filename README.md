@@ -57,6 +57,16 @@ Trendora is a feature-rich frontend project focused on clean UI/UX for an online
 
 ---
 
+## 📸 Screenshots
+
+![Homepage](assets/screenshots/home.png)
+![Categories Page](assets/screenshots/categories.png)
+![Products Page](assets/screenshots/products.png)
+![Cart Page](assets/screenshots/cart.png)
+![Contact Page](assets/screenshots/contact.png)
+![About Page](assets/screenshots/about.png)
+
+---
 ## 🧾 How to Run Locally
 
 1. Clone the repo:

@@ -59,11 +59,22 @@ Trendora is a feature-rich frontend project focused on clean UI/UX for an online
 
 ## 📸 Screenshots
 
+### 🏠 Homepage
 ![Homepage](assets/screenshots/home.png)
+
+### 📂 Categories Page
 ![Categories Page](assets/screenshots/categories.png)
+
+### 🛍️ Products Page
 ![Products Page](assets/screenshots/products.png)
+
+### 🛒 Cart Page
 ![Cart Page](assets/screenshots/cart.png)
+
+### ✉️ Contact Page
 ![Contact Page](assets/screenshots/contact.png)
+
+### ℹ️ About Page
 ![About Page](assets/screenshots/about.png)
 
 ---

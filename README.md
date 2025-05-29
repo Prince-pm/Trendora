@@ -12,6 +12,16 @@ Trendora is a feature-rich frontend project focused on clean UI/UX for an online
 
 ---
 
+## 👤 Developer Info
+
+- **Name:** Prince Maheshbhai Makwana
+- **Project Title:** Trendora – E-Commerce Website
+- **College:** Dhirubhai Ambani University, IIT Madras
+- **Internship Organization:** Internship Studio
+- **Type:** Website Design Internship Project
+
+---
+
 ## 📁 Pages & Features
 
 | Page                        | Features Included                                                                                                                                     |
@@ -34,7 +44,7 @@ Trendora is a feature-rich frontend project focused on clean UI/UX for an online
 - **Theme**: Dark elegance (black background, white text)
 - **Typography**: Modern sans-serif
 - **Color Palette**: Black, White, Gray with accent colors (Gold or Blue)
-- **Logo**: White-on-black branding with slogan
+- **Logo**: Gold-on-black branding with slogan
 
 ---
 
